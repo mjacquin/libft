@@ -1,6 +1,10 @@
 Libft
 ===========
 
+**Tab Functions**
+- ft_tablen       (Size of 2d table)
+- ft_tabdel       (Delete 2d table)
+
 **List Functions**
 - ft_lst_cnode    (Create node)
 - ft_lst_anode    (Push front created node)
