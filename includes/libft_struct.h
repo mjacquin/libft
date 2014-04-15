@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   libft_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjacquin <mjacquin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 12:56:07 by mjacquin          #+#    #+#             */
-/*   Updated: 2014/03/26 15:12:53 by mjacquin         ###   ########.fr       */
+/*   Created: 2014/04/15 13:41:02 by mjacquin          #+#    #+#             */
+/*   Updated: 2014/04/15 13:42:10 by mjacquin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_STRUCT_H
+# define LIBFT_STRUCT_H
 
-static int	bad_char(char c)
+typedef struct		s_list
 {
-	if (c == ' ' || c == '\n' || c == '\t')
-		return (1);
-	return (0);
-}
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
-char		*ft_strtrim(char const *s)
+typedef struct		s_lst
 {
-	size_t		len;
-	size_t		end;
+	char			*str;
+	size_t			len;
+	struct s_lst	*next;
+}					t_lst;
 
-	while (*s && bad_char(*s))
-		s++;
-	len = ft_strlen(s);
-	end = 0;
-	while (len - end > 0 && bad_char(s[len - end - 1]))
-		end++;
-	if (len - end == 0)
-		return (NULL);
-	return (ft_strsub(s, 0, len - end));
-}
+#endif

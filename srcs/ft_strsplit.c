@@ -6,7 +6,7 @@
 /*   By: mjacquin <mjacquin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 13:50:22 by mjacquin          #+#    #+#             */
-/*   Updated: 2013/12/06 15:32:50 by mjacquin         ###   ########.fr       */
+/*   Updated: 2014/03/18 17:38:32 by mjacquin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,41 @@ static size_t	ft_word_count(char const *s, char c)
 	return (word_cnt);
 }
 
+static size_t	word_len(char const *s, char c)
+{
+	size_t		i;
+
+	i = 0;
+	while (*s && *s != c)
+	{
+		s++;
+		i++;
+	}
+	return (i);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
-	char		**ar;
+	char		**tab;
 	size_t		i;
-	size_t		sub;
 	size_t		word;
 
 	i = 0;
 	word = ft_word_count(s, c);
-	if ((ar = (char **)ft_memalloc(sizeof(char *) * (word + 1))) == NULL)
+	if ((tab = (char **)ft_memalloc(sizeof(char *) * (word + 1))) == NULL)
 		return (NULL);
-	ar[word] = '\0';
-	while (*s && word--)
+	while (*s)
 	{
-		sub = 0;
-		while (*s == c && *s)
+		while (*s && *s == c)
 			s++;
-		while (*s != c && *s)
+		word = word_len(s, c);
+		if (word)
 		{
-			s++;
-			sub++;
+			tab[i++] = ft_strsub(s, 0, word);
+			tab[i] = 0;
+			s += word;
 		}
-		ar[i++] = ft_strsub(s - sub, 0, sub);
-		s++;
+		s += *s ? 1 : 0;
 	}
-	return (ar);
+	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: mjacquin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/15 17:27:24 by mjacquin          #+#    #+#             */
-/*   Updated: 2014/03/04 17:03:37 by mjacquin         ###   ########.fr       */
+/*   Updated: 2014/04/15 13:42:47 by mjacquin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,7 @@
 # define LIBFT_H
 
 # include <stddef.h>
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
-typedef struct		s_lst
-{
-	char			*str;
-	size_t			len;
-	struct s_lst	*next;
-}					t_lst;
+# include <libft_struct.h>
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -109,4 +96,4 @@ void			ft_lst_fnode(t_lst **x);
 void			ft_lst_del(t_lst **lst);
 void			ft_print_lst(t_lst *lst);
 
-#endif /* !LIBFT_H */
+#endif
